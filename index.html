@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conforto da Palavra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #6c63ff;
+            color: white;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #6c63ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #5753d9;
+        }
+        footer {
+            margin-top: 2rem;
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+        }
+        #sentimentos {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conforto da Palavra</h1>
+        <p>Encontre uma mensagem para iluminar seu dia.</p>
+    </header>
+    <main>
+        <button class="btn" onclick="sortearVersiculo()">Sortear um Versículo Aleatório</button>
+        <div id="sentimentos"></div>
+        <div id="resultado" style="margin-top: 2rem; font-size: 1.5rem;"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Conforto da Palavra. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Lista de versículos aleatórios predefinidos
+        const versiculosAleatorios = [
+            { "texto": "O Senhor é a minha luz e a minha salvação; a quem temerei?", "referencia": "Salmos 27:1" },
+            { "texto": "Alegrai-vos sempre no Senhor. Novamente direi: alegrai-vos!", "referencia": "Filipenses 4:4" },
+            { "texto": "Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.", "referencia": "Salmos 118:24" },
+            { "texto": "Pela manhã, Senhor, tu ouves a minha voz; de manhã te apresento a minha oração e fico esperando.", "referencia": "Salmos 5:3" },
+            { "texto": "Não andem ansiosos por coisa alguma; antes, em tudo, pela oração e súplica, e com ação de graças, apresentem seus pedidos a Deus.", "referencia": "Filipenses 4:6" },
+            { "texto": "Porque eu sei os planos que tenho para vocês, diz o Senhor, planos de prosperidade e não de calamidade, para dar-lhes um futuro e uma esperança.", "referencia": "Jeremias 29:11" },
+            { "texto": "Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.", "referencia": "Salmos 46:1" },
+            { "texto": "Lançem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.", "referencia": "1 Pedro 5:7" },
+            { "texto": "O Senhor é o meu pastor; nada me faltará.", "referencia": "Salmos 23:1" },
+            { "texto": "Tudo posso naquele que me fortalece.", "referencia": "Filipenses 4:13" }
+        ];
+
+        // Função para exibir a passagem na tela
+        function exibirPassagem(passagem) {
+            document.getElementById('resultado').innerHTML = `<p><strong>${passagem.texto}</strong></p><p><em>${passagem.referencia}</em></p>`;
+        }
+
+        // Função para sortear um versículo aleatório da lista
+        function sortearVersiculo() {
+            const versiculo = versiculosAleatorios[Math.floor(Math.random() * versiculosAleatorios.length)];
+            exibirPassagem(versiculo);
+        }
+
+        // Sentimentos disponíveis para os botões
+        const sentimentos = ["fé", "alegria", "tristeza", "confiança", "esperança", "proteção", "ansiedade", "motivação"];
+
+        // Lista de passagens associadas a sentimentos
+        const passagens = {
+            "fé": [
+                { "texto": "Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai senão por mim.", "referencia": "João 14:6" },
+                { "texto": "Tudo posso naquele que me fortalece.", "referencia": "Filipenses 4:13" },
+                { "texto": "O Senhor é o meu pastor; nada me faltará.", "referencia": "Salmos 23:1" },
+                { "texto": "Confie no Senhor de todo o seu coração e não se apoie no seu próprio entendimento.", "referencia": "Provérbios 3:5" },
+                { "texto": "Aquele que habita no esconderijo do Altíssimo descansará à sombra do Todo-Poderoso.", "referencia": "Salmos 91:1" }
+            ],
+            "alegria": [
+                { "texto": "Alegrai-vos sempre no Senhor. Novamente direi: alegrai-vos!", "referencia": "Filipenses 4:4" },
+                { "texto": "Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.", "referencia": "Salmos 118:24" },
+                { "texto": "Regozijai-vos na esperança, sede pacientes na tribulação, perseverai na oração.", "referencia": "Romanos 12:12" },
+                { "texto": "Em sua presença há plenitude de alegria; à sua direita há delícias perpetuamente.", "referencia": "Salmos 16:11" },
+                { "texto": "Porque a alegria do Senhor é a nossa força.", "referencia": "Neemias 8:10" }
+            ],
+            "tristeza": [
+                { "texto": "Bem-aventurados os que choram, pois serão consolados.", "referencia": "Mateus 5:4" },
+                { "texto": "Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.", "referencia": "Salmos 46:1" },
+                { "texto": "O Senhor está perto dos que têm o coração quebrantado e salva os de espírito abatido.", "referencia": "Salmos 34:18" },
+                { "texto": "Ele enxugará dos seus olhos toda lágrima, e não haverá mais morte, nem pranto, nem clamor, nem dor.", "referencia": "Apocalipse 21:4" },
+                { "texto": "Lançem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.", "referencia": "1 Pedro 5:7" }
+            ],
+            "confiança": [
+                { "texto": "O Senhor é o meu pastor; nada me faltará.", "referencia": "Salmos 23:1" },
+                { "texto": "Confie no Senhor de todo o seu coração e não se apoie no seu próprio entendimento.", "referencia": "Provérbios 3:5" },
+                { "texto": "O Senhor é fiel em todas as suas palavras e justo em todos os seus feitos.", "referencia": "Salmos 145:13" },
+                { "texto": "Bendito o homem que confia no Senhor, e cuja confiança é o Senhor.", "referencia": "Jeremias 17:7" },
+                { "texto": "O Senhor é a minha luz e a minha salvação; a quem temerei?", "referencia": "Salmos 27:1" }
+            ],
+            "esperança": [
+                { "texto": "Porque eu sei os planos que tenho para vocês, diz o Senhor, planos de prosperidade e não de calamidade, para dar-lhes um futuro e uma esperança.", "referencia": "Jeremias 29:11" },
+                { "texto": "Em Deus, cujos planos são perfeitos, espero a minha salvação.", "referencia": "Salmos 62:5" },
+                { "texto": "A esperança que temos como âncora da alma, segura e firme.", "referencia": "Hebreus 6:19" },
+                { "texto": "O Senhor é bom para os que esperam por ele, para os que o buscam.", "referencia": "Lamentações 3:25" },
+                { "texto": "Mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão, e não se cansarão; caminharão, e não se fatigarão.", "referencia": "Isaías 40:31" }
+            ],
+            "proteção": [
+                { "texto": "O Senhor é o meu refúgio e a minha fortaleza, o meu Deus, em quem confio.", "referencia": "Salmos 91:2" },
+                { "texto": "O anjo do Senhor acampa-se ao redor daqueles que o temem, e os livra.", "referencia": "Salmos 34:7" },
+                { "texto": "Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.", "referencia": "Salmos 46:1" },
+                { "texto": "O Senhor livra os justos de todas as suas aflições.", "referencia": "Salmos 34:19" },
+                { "texto": "O Senhor é fiel; ele os fortalecerá e os guardará do maligno.", "referencia": "2 Tessalonicenses 3:3" }
+            ],
+            "ansiedade": [
+                { "texto": "Não andem ansiosos por coisa alguma; antes, em tudo, pela oração e súplica, e com ação de graças, apresentem seus pedidos a Deus.", "referencia": "Filipenses 4:6" },
+                { "texto": "Lançem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.", "referencia": "1 Pedro 5:7" },
+                { "texto": "E a paz de Deus, que excede todo entendimento, guardará o seu coração e a sua mente em Cristo Jesus.", "referencia": "Filipenses 4:7" },
+                { "texto": "Mas, se algum de vocês está em ansiedade ou sofrimento, faça oração!", "referencia": "Tiago 5:13" },
+                { "texto": "Eu, o Senhor, vou ouvi-lo quando você chamar; sou eu quem cuido de você.", "referencia": "Isaías 41:10" }
+            ],
+            "motivação": [
+                { "texto": "Tudo posso naquele que me fortalece.", "referencia": "Filipenses 4:13" },
+                { "texto": "Se Deus é por nós, quem será contra nós?", "referencia": "Romanos 8:31" },
+                { "texto": "Eis que estou convosco todos os dias, até a consumação dos séculos.", "referencia": "Mateus 28:20" },
+                { "texto": "Eu sou o Senhor, teu Deus, que te sustento com a minha mão direita.", "referencia": "Isaías 41:13" },
+                { "texto": "Levanta-te, e anda.", "referencia": "João 5:8" }
+            ]
+        };
+
+        // Função para escolher passagem baseada no sentimento
+        function escolherPorSentimento(sentimento) {
+            const filtradas = passagens[sentimento.toLowerCase()];
+            if (filtradas) {
+                const passagem = filtradas[Math.floor(Math.random() * filtradas.length)];
+                exibirPassagem(passagem);
+            } else {
+                document.getElementById('resultado').innerText = `Nenhuma passagem encontrada para o sentimento '${sentimento}'!`;
+            }
+        }
+
+        // Função para criar os botões de sentimentos
+        function criarBotoesSentimentos() {
+            const container = document.getElementById('sentimentos');
+            sentimentos.forEach(sentimento => {
+                const button = document.createElement('button');
+                button.className = 'btn';
+                button.innerText = sentimento.charAt(0).toUpperCase() + sentimento.slice(1);
+                button.onclick = () => escolherPorSentimento(sentimento);
+                container.appendChild(button);
+            });
+        }
+
+        criarBotoesSentimentos();
+    </script>
+</body>
+</html>
